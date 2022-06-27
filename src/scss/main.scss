@@ -1,0 +1,49 @@
+@use './common/' as *;
+@use './components/header';
+@use './components/stepper-panel';
+@use './components/form-panel';
+@use './components/order-panel';
+@use './components/btn-group';
+
+
+main {
+  @extend %flex-col;
+  gap: 32px;
+  margin: 0 auto;
+  padding: 72px 15px;
+}
+
+@media screen and (min-width: 375px) {
+  main {
+    display: grid;
+    grid-template-areas:
+      'title title'
+      'stepper order'
+      'form order'
+      'btn-group order';
+
+    gap: 64px 8vw;
+    padding: 140px 7vw;
+  }
+
+  h1 {
+    grid-area: title;
+    @include text(24px, 24px, 700, 'Noto Sans TC');
+  }
+
+  .stepper-info {
+    grid-area: stepper;
+  }
+
+  .form-panel {
+    grid-area: form;
+  }
+
+  .order-panel {
+    grid-area: order;
+  }
+
+  .btn-group {
+    grid-area: btn-group;
+  }
+}

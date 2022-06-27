@@ -1,0 +1,265 @@
+@use '../common/' as *;
+
+//實作思路:
+//再做一個區塊時 先做文字細節並找出共用的Css來精簡 再排版架構 
+
+%radio-style {
+
+  +.methods::after {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+
+  }
+
+  +.methods::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    left: -40px;
+    top: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 6px black;
+
+  }
+}
+
+
+.form-panel {
+  .basic-info {
+
+    //step2 排版架構
+    display: grid;
+    // 針對grid item限制 一定程度防止border因ＲＷＤ縮小被切除
+    grid-template-columns: minmax(auto, 133px) minmax(auto, 1fr);
+    grid-template-areas:
+      'title title'
+      'gender name'
+      'tel tel'
+      'email email'
+      'city city'
+      'address address'
+    ;
+    gap: 24px 30px;
+
+    // 針對性佈局
+    h1 {
+      grid-area: title;
+    }
+
+    .gender {
+      grid-area: gender;
+    }
+
+    .name {
+      grid-area: name;
+    }
+
+    .tel {
+      grid-area: tel;
+    }
+
+    .email {
+      grid-area: email;
+    }
+
+    .city {
+      grid-area: city;
+    }
+
+    .address {
+      grid-area: address;
+    }
+
+    //step1 文字細節 &共用樣式
+    .basic-items {
+      position: relative;
+      z-index: 0;
+      @extend %flex-col;
+      gap: 8px;
+
+      color: #808080;
+      @include text(12px, 16px, 400, 'Noto Sans TC');
+
+      select,
+      input {
+        padding: 12px 18px;
+        border: 1px solid #4A4A4A;
+        border-radius: 4px;
+
+      }
+
+      select {
+        background-color: transparent;
+        cursor: pointer;
+        -webkit-appearance: none;
+
+        color: #808080;
+        @include text(12px, 16px, 400, 'Noto Sans TC');
+      }
+
+      &.city>select {
+        color: #999999;
+      }
+
+      &:nth-of-type(1)::after,
+      &:nth-of-type(5)::after {
+        content: url(/src/images/Rectangle@2x.png);
+        position: absolute;
+        top: calc(50% + 2px);
+        right: 18px;
+        z-index: -1;
+      }
+    }
+
+
+  }
+
+  .delivery-info {
+
+    @extend %flex-col;
+    gap: 24px;
+
+    .delivery-wrapper {
+      position: relative;
+      display: grid;
+      grid-template-columns: 20px minmax(200px, 1fr) 24px;
+      grid-template-rows: 20px 20px;
+      gap: 2px 20px;
+
+      .radio {
+        grid-row: span 2;
+        place-self: center;
+      }
+
+      .methods {
+        position: relative;
+        font-size: 14px;
+        line-height: 20px;
+        align-self: end;
+      }
+
+      .time {
+        grid-column: 2/3;
+      }
+
+      .cost {
+        grid-row: 1/2;
+        grid-column: 3/4;
+        align-self: end;
+      }
+
+      padding: 11px 20px;
+      border: 1px solid #F0F0F5;
+      border-radius: 4px;
+      @include text(12px, 16px, 400, 'Inter');
+
+      input[type="radio"]:checked {
+        @extend %radio-style;
+
+      }
+
+    }
+
+    .delivery-wrapper:nth-of-type(2) {
+      font-family: 'Noto Sans TC';
+
+      .methods {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .card-info {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 24px;
+
+    h1 {
+      grid-area: title;
+      width: 100%;
+    }
+
+    .card-owner {
+      width: 100%;
+      grid-area: owner;
+    }
+
+    .card-num {
+      width: 100%;
+      grid-area: num;
+    }
+
+    .card-valid {
+      width: 45%;
+      grid-area: valid;
+    }
+
+    .card-pwd {
+      width: 45%;
+      grid-area: pwd;
+    }
+
+
+
+    .card-items {
+      @extend %flex-col;
+      gap: 8px;
+      color: $gray;
+
+      label {
+        color: #808080;
+        @include text(12px, 16px, 400, 'Noto Sans TC');
+      }
+
+      input {
+        border: 1px solid #4A4A4A;
+        border-radius: 4px;
+        color: #999999;
+        padding: 12px 0px 12px 18px;
+        @include text(12px, 16px, 400, 'Noto Sans TC');
+      }
+
+    }
+  }
+
+
+
+}
+
+@media screen and (min-width: 375px) {
+  .form-panel {
+    .basic-info {
+      grid-template-columns: unset;
+      grid-template-areas:
+        'title . . . . .'
+        'gender gender name name name name'
+        'tel tel tel email email email'
+        'city city address address address address';
+    }
+
+    .card-info {
+
+      .card-owner,
+      .card-num {
+        width: 65%;
+      }
+
+      .card-pwd,
+      .card-valid {
+        width: 45%;
+      }
+
+    }
+
+  }
+
+}

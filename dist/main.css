@@ -1,0 +1,639 @@
+@charset "UTF-8";
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+main, .form-panel .basic-info .basic-items, .form-panel .delivery-info, .form-panel .card-info .card-items, .stepper-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.w-4 {
+  width: 35% !important;
+}
+
+.w-f {
+  width: 100% important;
+}
+
+.r-0 {
+  position: absolute;
+  right: 0;
+  top: 24px;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+hr,
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+  height: 60px;
+  background: #ccc;
+}
+
+.stepper-panel .steps .step .circle {
+  width: 33px;
+  height: 32px;
+  border: 1px solid #AFB1BD;
+  border-radius: 23px;
+}
+
+.stepper-panel {
+  gap: 24px;
+}
+.stepper-panel .steps {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+}
+.stepper-panel .steps .step {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 16px;
+  font-weight: 700;
+  font-family: "Noto Sans TC";
+  gap: 8px;
+  color: #AFB1BD;
+}
+.stepper-panel .steps .step:nth-of-type(1) > .circle::after {
+  content: "1";
+}
+.stepper-panel .steps .step:nth-of-type(2) > .circle::after {
+  content: "2";
+}
+.stepper-panel .steps .step:nth-of-type(3) > .circle::after {
+  content: "3";
+}
+.stepper-panel .steps .step.active .circle, .stepper-panel .steps .step.checked .circle {
+  border-color: #2A2A2A;
+}
+.stepper-panel .steps .step.active .text, .stepper-panel .steps .step.checked .text {
+  color: #2A2A2A;
+}
+.stepper-panel .steps .step.active + .line, .stepper-panel .steps .step.checked + .line {
+  background: #2A2A2A;
+}
+.stepper-panel .steps .step.active .circle {
+  color: #2A2A2A;
+}
+.stepper-panel .steps .step.checked .circle {
+  background: #2A2A2A;
+  color: #FFFFFF;
+}
+.stepper-panel .steps .step.checked .circle::after {
+  content: "✓";
+}
+.stepper-panel .steps .step:first-child .circle {
+  background: #2A2A2A;
+  color: #FFFFFF;
+}
+.stepper-panel .steps .step .circle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.stepper-panel .steps .step .text {
+  display: none;
+  line-height: 24px;
+  font-weight: 400;
+}
+.stepper-panel .steps .line {
+  align-self: center;
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background-color: #F0F0F5;
+  border: none;
+}
+
+@media screen and (min-width: 375px) {
+  .stepper-panel {
+    gap: 48px;
+  }
+  .stepper-panel .steps .step .text {
+    display: block;
+  }
+}
+.form-panel .delivery-info .delivery-wrapper input[type=radio]:checked + .methods::after {
+  content: "";
+  position: absolute;
+  left: -38px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.form-panel .delivery-info .delivery-wrapper input[type=radio]:checked + .methods::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: -40px;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 6px black;
+}
+
+.form-panel .basic-info {
+  display: grid;
+  grid-template-columns: minmax(auto, 133px) minmax(auto, 1fr);
+  grid-template-areas: "title title" "gender name" "tel tel" "email email" "city city" "address address";
+  gap: 24px 30px;
+}
+.form-panel .basic-info h1 {
+  grid-area: title;
+}
+.form-panel .basic-info .gender {
+  grid-area: gender;
+}
+.form-panel .basic-info .name {
+  grid-area: name;
+}
+.form-panel .basic-info .tel {
+  grid-area: tel;
+}
+.form-panel .basic-info .email {
+  grid-area: email;
+}
+.form-panel .basic-info .city {
+  grid-area: city;
+}
+.form-panel .basic-info .address {
+  grid-area: address;
+}
+.form-panel .basic-info .basic-items {
+  position: relative;
+  z-index: 0;
+  gap: 8px;
+  color: #808080;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "Noto Sans TC";
+}
+.form-panel .basic-info .basic-items select,
+.form-panel .basic-info .basic-items input {
+  padding: 12px 18px;
+  border: 1px solid #4A4A4A;
+  border-radius: 4px;
+}
+.form-panel .basic-info .basic-items select {
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  color: #808080;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "Noto Sans TC";
+}
+.form-panel .basic-info .basic-items.city > select {
+  color: #999999;
+}
+.form-panel .basic-info .basic-items:nth-of-type(1)::after, .form-panel .basic-info .basic-items:nth-of-type(5)::after {
+  content: url(/src/images/Rectangle@2x.png);
+  position: absolute;
+  top: calc(50% + 2px);
+  right: 18px;
+  z-index: -1;
+}
+.form-panel .delivery-info {
+  gap: 24px;
+}
+.form-panel .delivery-info .delivery-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px minmax(200px, 1fr) 24px;
+  grid-template-rows: 20px 20px;
+  gap: 2px 20px;
+  padding: 11px 20px;
+  border: 1px solid #F0F0F5;
+  border-radius: 4px;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "Inter";
+}
+.form-panel .delivery-info .delivery-wrapper .radio {
+  grid-row: span 2;
+  place-self: center;
+}
+.form-panel .delivery-info .delivery-wrapper .methods {
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+  align-self: end;
+}
+.form-panel .delivery-info .delivery-wrapper .time {
+  grid-column: 2/3;
+}
+.form-panel .delivery-info .delivery-wrapper .cost {
+  grid-row: 1/2;
+  grid-column: 3/4;
+  align-self: end;
+}
+.form-panel .delivery-info .delivery-wrapper:nth-of-type(2) {
+  font-family: "Noto Sans TC";
+}
+.form-panel .delivery-info .delivery-wrapper:nth-of-type(2) .methods {
+  font-weight: 700;
+}
+.form-panel .card-info {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 24px;
+}
+.form-panel .card-info h1 {
+  grid-area: title;
+  width: 100%;
+}
+.form-panel .card-info .card-owner {
+  width: 100%;
+  grid-area: owner;
+}
+.form-panel .card-info .card-num {
+  width: 100%;
+  grid-area: num;
+}
+.form-panel .card-info .card-valid {
+  width: 45%;
+  grid-area: valid;
+}
+.form-panel .card-info .card-pwd {
+  width: 45%;
+  grid-area: pwd;
+}
+.form-panel .card-info .card-items {
+  gap: 8px;
+  color: #AFB1BD;
+}
+.form-panel .card-info .card-items label {
+  color: #808080;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "Noto Sans TC";
+}
+.form-panel .card-info .card-items input {
+  border: 1px solid #4A4A4A;
+  border-radius: 4px;
+  color: #999999;
+  padding: 12px 0px 12px 18px;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "Noto Sans TC";
+}
+
+@media screen and (min-width: 375px) {
+  .form-panel .basic-info {
+    grid-template-columns: unset;
+    grid-template-areas: "title . . . . ." "gender gender name name name name" "tel tel tel email email email" "city city address address address address";
+  }
+  .form-panel .card-info .card-owner,
+.form-panel .card-info .card-num {
+    width: 65%;
+  }
+  .form-panel .card-info .card-pwd,
+.form-panel .card-info .card-valid {
+    width: 45%;
+  }
+}
+.order-panel {
+  grid-area: order;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 1px solid #F0F0F5;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 1500px;
+  max-width: 400px;
+}
+.order-panel h1 {
+  display: none;
+  grid-area: title;
+}
+.order-panel .delivery-fee-info,
+.order-panel .total-info {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #F0F0F5;
+  padding: 16px 8px 0px 0px;
+}
+.order-panel .total-info .total::before {
+  content: "$";
+}
+.order-panel .order-info {
+  display: grid;
+  grid-template-columns: 100px 25px 1fr;
+  grid-template-rows: 22px 22px 22px;
+  grid-template-areas: "img . name" "img . counter" "img . price";
+  gap: 16px 0px;
+  justify-items: end;
+}
+.order-panel .order-info figure > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  grid-area: img;
+}
+.order-panel .order-info .name {
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: Noto Sans TC;
+  grid-area: name;
+}
+.order-panel .order-info .counter {
+  display: flex;
+  align-items: center;
+  grid-area: counter;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  font-family: Inter;
+}
+.order-panel .order-info .counter p {
+  width: 65px;
+  text-align: center;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  font-family: Inter;
+}
+.order-panel .order-info .counter img {
+  width: 26px;
+  height: 27px;
+}
+.order-panel .order-info .price {
+  font-style: normal;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  font-family: Nunito Sans;
+  grid-area: price;
+}
+.order-panel .order-info .price::before {
+  content: "$";
+}
+
+@media screen and (min-width: 375px) {
+  .order-panel h1 {
+    display: block;
+  }
+  .order-panel .order-info {
+    grid-template-columns: 100px 1fr 50px;
+    grid-template-areas: "img name price" "img counter ." "img . .";
+    justify-items: start;
+    gap: 18px 25px;
+  }
+  .order-panel .order-info .price {
+    justify-self: end;
+  }
+}
+@media screen and (min-width: 375px) {
+  .order-panel {
+    padding: 32px 24px;
+    gap: 34px;
+  }
+}
+.btn-group {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #E6E6EB;
+  padding-top: 24px;
+}
+.btn-group .previous {
+  position: absolute;
+  top: 35px;
+  align-self: center;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: Inter;
+  width: 25%;
+}
+.btn-group .next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 46px;
+  background: #F67599;
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+.btn-group .next::after,
+.btn-group .previous::before {
+  display: inline-block;
+  width: 20.5px;
+  height: 9px;
+  background-size: cover;
+}
+.btn-group .previous::before {
+  content: "";
+  background-image: url("/src/images/arrow-left-arrow.png");
+  margin-right: 12.5px;
+}
+.btn-group .next::after {
+  content: "";
+  background-image: url(/src/images/arrow-right-arrow.png);
+  margin-left: 13.5px;
+}
+
+@media screen and (min-width: 375px) {
+  .btn-group .next {
+    width: 174px;
+  }
+}
+main {
+  gap: 32px;
+  margin: 0 auto;
+  padding: 72px 15px;
+}
+
+@media screen and (min-width: 375px) {
+  main {
+    display: grid;
+    grid-template-areas: "title title" "stepper order" "form order" "btn-group order";
+    gap: 64px 8vw;
+    padding: 140px 7vw;
+  }
+
+  h1 {
+    grid-area: title;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 700;
+    font-family: "Noto Sans TC";
+  }
+
+  .stepper-info {
+    grid-area: stepper;
+  }
+
+  .form-panel {
+    grid-area: form;
+  }
+
+  .order-panel {
+    grid-area: order;
+  }
+
+  .btn-group {
+    grid-area: btn-group;
+  }
+}/*# sourceMappingURL=main.css.map */

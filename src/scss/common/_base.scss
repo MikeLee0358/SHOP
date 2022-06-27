@@ -1,0 +1,50 @@
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+
+$gray : #AFB1BD;
+$black: #2A2A2A;
+$white: #FFFFFF;
+
+
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@mixin flex($main-axis, $cross-axis) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
+
+@mixin text($font-size, $line-height, $font-weight, $font-family) {
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  font-family: $font-family;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.w-4 {
+  width: 35% !important;
+}
+
+.w-f {
+  width: 100% important;
+}
+
+.r-0 {
+  position: absolute;
+  right: 0;
+  top: 24px;
+}

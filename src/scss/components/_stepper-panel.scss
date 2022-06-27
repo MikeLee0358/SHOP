@@ -1,0 +1,106 @@
+@use '../common/' as *;
+
+
+%circle-style {
+  width: 33px;
+  height: 32px;
+  border: 1px solid $gray;
+  border-radius: 23px;
+}
+
+@mixin getStepNum ($num) {
+  @for $i from 1 through $num {
+    &:nth-of-type(#{$i})>.circle::after {
+      content: '#{$i}';
+    }
+  }
+}
+
+.stepper-panel {
+  @extend %flex-col;
+  gap: 24px;
+
+  .steps {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+
+    .step {
+
+      @include flex(flex-start, center);
+      @include getStepNum(3);
+      @include text(1rem, 16px, 700, "Noto Sans TC");
+      gap: 8px;
+      color: $gray;
+
+      &.active,
+      &.checked {
+        .circle {
+          border-color: $black;
+        }
+
+        .text {
+          color: $black;
+        }
+
+        +.line {
+          background: $black;
+        }
+      }
+
+      &.active .circle {
+        color: $black;
+      }
+
+      &.checked .circle {
+        background: $black;
+        color: $white;
+
+        &::after {
+          content: '\2713';
+        }
+      }
+
+      //step 1 的開始樣式
+      &:first-child .circle {
+        background: $black;
+        color: $white;
+      }
+
+      .circle {
+        @include flex(center, center);
+        @extend %circle-style;
+      }
+
+      .text {
+        display: none;
+        line-height: 24px;
+        font-weight: 400;
+      }
+
+    }
+
+    .line {
+      align-self: center;
+      width: 60px;
+      height: 1px;
+      margin: 0 auto;
+      background-color: #F0F0F5;
+      border: none;
+    }
+  }
+
+}
+
+
+
+
+@media screen and (min-width: 375px) {
+  .stepper-panel {
+    gap: 48px;
+
+    .steps .step .text {
+      display: block;
+    }
+  }
+
+}

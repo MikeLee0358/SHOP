@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/scss/main.css">
+  <title>shop</title>
+
+</head>
+
+<body>
+  <!-- <header>
+    <label for="buger" class="burger-toggle"></label>
+    <input type="checkbox" id="burger">
+    <nav class="navbar">
+      <ul>
+        <li>男裝</li>
+        <li>女裝</li>
+        <li>最新消息</li>
+        <li>客製商品</li>
+        <li>聯絡我們</li>
+      </ul>
+    </nav>
+    <figure class="logo">
+      <img src="./src/images/Logo@2x-2.png" alt="alpha-shop-logo">
+    </figure>
+    <figure class="function">
+      <a href="www.gooogle.com"><img src="./src/images/search@1x.png" alt="search"></a>
+      <a href="#"><img src="./src/images/cart@1x.png" alt="cart"></a>
+      <a href="#"><img src="./src/images/darkmode@1x-2.png" alt="dark-mode"></a>
+    </figure>
+  </header> -->
+
+  <main>
+    <h1>結帳</h1>
+    <section class="stepper-panel">
+      <div class="steps">
+        <div class="step active  step-one">
+          <div class="circle"></div>
+          <p class="text">寄送地址</p>
+        </div>
+        <hr class="line ">
+        <div class="step step-two">
+          <div class="circle"></div>
+          <p class="text">運送方式</p>
+        </div>
+        <hr class="line">
+        <div class="step step-three">
+          <div class="circle"></div>
+          <p class="text">付款資訊</p>
+        </div>
+      </div>
+    </section>
+
+    <form class="form-panel">
+      <div action="" class="basic-info">
+        <h1>寄送地址</h1>
+        <div class="basic-items gender">
+          <label for="gender">稱謂</label>
+          <select name="gender" id="gender" required>
+            <option value="male">先生</option>
+            <option value="female">小姐</option>
+          </select>
+        </div>
+        <div class="basic-items name">
+          <label for="name" class="">姓名</label>
+          <input type="text" name="name" id="name" placeholder="請輸入姓名">
+        </div>
+        <div class="basic-items tel">
+          <label for="tel">電話</label>
+          <input type="text" name="tel" id="tel" placeholder="請輸入行動電話">
+        </div>
+        <div class="basic-items email">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" placeholder="請輸入電子郵件">
+        </div>
+        <div class="basic-items city">
+          <label for="city">縣市</label>
+          <select name="city" id="city" placeholder="請輸入縣市" required>
+            <option value="" disabled selected>請選擇縣市</option>
+            <option value="taipei">台北市</option>
+            <option value="taoyuan">桃園市</option>
+            <option value="hsinchu">新竹市</option>
+          </select>
+        </div>
+        <div class="basic-items address">
+          <label for="address">地址</label>
+          <input type="email" name="address" id="address" placeholder="請輸入地址">
+        </div>
+      </div>
+
+      <div action="" class="delivery-info d-none">
+        <h1>運送方式</h1>
+        <div class="delivery-wrapper ">
+          <input type="radio" id="radio-top" name="switch" class="radio" checked>
+          <label for="radio-top" class="methods free">標準運送</label>
+          <label for="radio-top" class="time free">約3~7個工作天</label>
+          <label for="radio-top" class="cost free">免費</label>
+        </div>
+        <div class="delivery-wrapper">
+          <input type="radio" id="radio-bottom" name="switch" class="radio">
+          <label for="radio-bottom" class="methods">DHL貨運</label>
+          <label for="radio-bottom" class="time">48小時內送達</label>
+          <label for="radio-bottom" class="cost">$500</label>
+        </div>
+      </div>
+
+      <div action="" class="card-info d-none">
+        <h1>付款資訊</h1>
+        <div class="card-items card-owner">
+          <label for="card-owner">持卡人姓名</label>
+          <input type="text" name="card-owner" id="card-owner" placeholder="John Doe">
+        </div>
+        <div class="card-items card-num">
+          <label for="card-num">卡號</label>
+          <input type="text" name="card-num" id="card-num" placeholder="1111 2222 3333 4444">
+        </div>
+        <div class="card-items card-valid">
+          <label for="card-valid">有效期限</label>
+          <input type="text" name="card-valid" id="card-valid" placeholder="MM/YY">
+        </div>
+        <div class="card-items card-pwd">
+          <label for="card-pwd">CCV/CVC</label>
+          <input type="text" name="card-pwd" id="card-pwd" placeholder="123">
+        </div>
+      </div>
+    </form>
+
+    <section class="order-panel ">
+      <h1>購物籃</h1>
+      <div class="order-info order-info-top">
+        <figure class="img">
+          <img src="./src/images/Block@2x.png" alt="a person wearing jeans picture">
+        </figure>
+        <p class="name top">破壞補丁修身牛仔褲</p>
+        <div class="counter top">
+          <img src="./src/images/icon-.png" class="minus top" alt="minus-icon">
+          <p class="num top">1</p>
+          <img src="./src/images/icon+.png" class="plus top" alt="plus-icon">
+        </div>
+        <p class="price top">3,999</p>
+      </div>
+      <div class="order-info order-info-bottom">
+        <figure class="img">
+          <img src="./src/images/Block@2x-2.png" alt="a person wearing jeans picture">
+        </figure>
+        <p class="name bottom">刷色直筒牛仔褲</p>
+        <div class="counter bottom">
+          <img src="./src/images/icon-.png" class="minus bottom" alt="minus-icon">
+          <p class="num bottom">1</p>
+          <img src="./src/images/icon+.png" class="plus bottom" alt="plus-icon">
+        </div>
+        <p class="price bottom">1,299</p>
+      </div>
+      <div class="delivery-fee-info">
+        <p>運費</p>
+        <p class="delivery-fee">免費</p>
+      </div>
+      <div class="total-info">
+        <p>小計</p>
+        <p class="total">5,298</p>
+      </div>
+    </section>
+
+    <div class="btn-group">
+      <div class="previous d-none">上一步</div>
+      <div class="next r-0">下一步</div>
+    </div>
+  </main>
+
+  <script src="./src/main.js"></script>
+</body>
+
+</html>
