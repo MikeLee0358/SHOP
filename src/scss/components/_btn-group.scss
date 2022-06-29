@@ -44,11 +44,11 @@
   }
 
 
-  // .next::after {
-  //   content: '';
-  //   background-image: url(/src/images/arrow-right-arrow.png);
-  //   margin-left: 13.5px;
-  // }
+  .next::after {
+    content: '';
+    background-image: url(/src/images/arrow-right-arrow.png);
+    margin-left: 13.5px;
+  }
 
 
 }
