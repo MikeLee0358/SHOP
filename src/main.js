@@ -27,7 +27,7 @@ let numBottom = document.querySelector('.num.bottom')
 
 let shoppingMoneyBox = 0
 let defaultMoney = 5298
-let box = 1
+let stepBox = 1
 
 const STEPPER_STATE = {
   StepOne: 1,
@@ -42,7 +42,7 @@ const STEPPER_STATE = {
 
 function changStepperState() {
 
-  switch (box) {
+  switch (stepBox) {
     case STEPPER_STATE.StepOne:
       stepTwo.classList.remove('active')
       stepTwo.classList.remove('checked')
@@ -83,7 +83,7 @@ function changStepperState() {
       deliveryInfo.classList.add('d-none')
       cardInfo.classList.remove('d-none')
 
-      nextBtn.textContent = '完成訂單'
+      nextBtn.textContent = '確認下單'
       break;
   }
 }
@@ -148,12 +148,12 @@ main.addEventListener('click', function clickedOnMain(event) {
 btnGroup.addEventListener('click', function ClickOnBtnGroup(event) {
   const target = event.target
   if (target.matches('.next')) {
-    if (box === 3) return
-    box++
+    if (stepBox === 3) return
+    stepBox++
   }
   if (target.matches('.previous')) {
-    if (box === 1) return
-    box--
+    if (stepBox === 1) return
+    stepBox--
   }
   changStepperState()
 })
