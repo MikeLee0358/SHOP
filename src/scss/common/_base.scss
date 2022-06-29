@@ -54,8 +54,9 @@ $white: #FFFFFF;
 }
 
 .next-arrow {
-  background-image: url(/src/images/arrow-right-arrow.png);
+  margin-left: 12.5px;
   width: 20px;
   height: 9px;
+  background-image: url(/src/images/arrow-right-arrow.png);
   background-size: contain;
 }

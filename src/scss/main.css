@@ -32,9 +32,10 @@ main, .form-panel .basic-info .basic-items, .form-panel .delivery-info, .form-pa
 }
 
 .next-arrow {
-  background-image: url(/src/images/arrow-right-arrow.png);
+  margin-left: 12.5px;
   width: 20px;
   height: 9px;
+  background-image: url(/src/images/arrow-right-arrow.png);
   background-size: contain;
 }
 
@@ -581,7 +582,8 @@ header {
   color: #FFFFFF;
 }
 .btn-group .next::after,
-.btn-group .previous::before {
+.btn-group .previous::before,
+.btn-group .next > div {
   display: inline-block;
   width: 20.5px;
   height: 9px;
@@ -592,8 +594,7 @@ header {
   background-image: url("/src/images/arrow-left-arrow.png");
   margin-right: 12.5px;
 }
-.btn-group .next::after {
-  content: "";
+.btn-group .next > div {
   background-image: url(/src/images/arrow-right-arrow.png);
   margin-left: 13.5px;
 }

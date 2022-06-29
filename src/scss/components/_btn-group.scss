@@ -30,7 +30,8 @@
   }
 
   .next::after,
-  .previous::before {
+  .previous::before,
+  .next>div {
     display: inline-block;
     width: 20.5px;
     height: 9px;
@@ -43,13 +44,12 @@
     margin-right: 12.5px;
   }
 
-
-  .next::after {
-    content: '';
+  // 初始的next樣式，之後按下nextBtn會修改nextBtn的text-node，所以這邊都會被覆蓋掉
+  // 不用偽元素原因：一但用了，每個頁面的next都會吃到這樣式，我只需要一開始有樣子，後面都靠dom.innerHTML修改就好．
+  .next>div {
     background-image: url(/src/images/arrow-right-arrow.png);
     margin-left: 13.5px;
   }
-
 
 }
 

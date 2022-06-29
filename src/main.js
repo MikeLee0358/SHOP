@@ -24,8 +24,6 @@ const total = document.querySelector('.total')
 let numTop = document.querySelector('.num.top')
 let numBottom = document.querySelector('.num.bottom')
 
-//currency
-const numberFormat = new Intl.NumberFormat('en-US', { style: "currency", currency: "USD" })
 
 let shoppingMoneyBox = 0
 let defaultMoney = 5298
@@ -42,19 +40,7 @@ const STEPPER_STATE = {
 
 
 
-function changStepperState(event) {
-  const target = event.target
-
-  if (target.matches('.next')) {
-    box++
-    if (box > 3) return
-  }
-  if (target.matches('.previous')) {
-    box--
-    if (box < 1) return
-  }
-
-  nextBtn.innerHTML = '下一步'
+function changStepperState() {
 
   switch (box) {
     case STEPPER_STATE.StepOne:
@@ -83,6 +69,9 @@ function changStepperState(event) {
       preBtn.classList.remove('d-none')
       preBtn.classList.add('w-4')
       nextBtn.classList.add('w-4')
+
+      // 把next text-node 改成下面樣子 所以Step3 切換成Step2 會一直維持這文字
+      nextBtn.innerHTML = '下一步<span class="next-arrow"></span>'
       break;
 
     case STEPPER_STATE.StepThree:
@@ -94,7 +83,7 @@ function changStepperState(event) {
       deliveryInfo.classList.add('d-none')
       cardInfo.classList.remove('d-none')
 
-      nextBtn.innerHTML = '確認下單'
+      nextBtn.textContent = '完成訂單'
       break;
   }
 }
@@ -157,5 +146,14 @@ main.addEventListener('click', function clickedOnMain(event) {
 
 
 btnGroup.addEventListener('click', function ClickOnBtnGroup(event) {
-  changStepperState(event)
+  const target = event.target
+  if (target.matches('.next')) {
+    if (box === 3) return
+    box++
+  }
+  if (target.matches('.previous')) {
+    if (box === 1) return
+    box--
+  }
+  changStepperState()
 })
