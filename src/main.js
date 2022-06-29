@@ -16,6 +16,9 @@ const preBtn = document.querySelector('.previous')
 
 //order
 const orderPanel = document.querySelector('.order-panel')
+const wrapperTop = document.querySelector('.delivery-wrapper-top')
+
+const wrapperBottom = document.querySelector('.delivery-wrapper-bottom')
 const deliveryFee = document.querySelector('.delivery-fee')
 const total = document.querySelector('.total')
 let numTop = document.querySelector('.num.top')
@@ -26,13 +29,12 @@ let defaultMoney = 5298
 
 
 const STEPPER_STATE = {
-  StepStart: 1,
   StepOne: 1,
   StepTwo: 2,
   StepThree: 3,
 }
 const controller = {
-  currentStep: STEPPER_STATE.StepStart
+  currentStep: STEPPER_STATE.StepOne
 }
 
 
@@ -61,7 +63,8 @@ function changStepperState(event) {
       cardInfo.classList.add('d-none')
 
       preBtn.classList.add('d-none')
-      nextBtn.classList.add('w-f')
+      nextBtn.classList.remove('w-4')
+      console.log(nextBtn.classList)
       break;
 
     case STEPPER_STATE.StepTwo:
@@ -76,7 +79,6 @@ function changStepperState(event) {
 
       preBtn.classList.remove('d-none')
       preBtn.classList.add('w-4')
-      nextBtn.classList.remove('w-f')
       nextBtn.classList.add('w-4')
       break;
 
@@ -102,6 +104,10 @@ function pureNumber(domStr) {
 
 
 function deliveryFeeChange(event) {
+  wrapperTop.classList.remove('border')
+  wrapperBottom.classList.remove('border')
+  event.target.parentElement.classList.add('border')
+
   if (event.target.matches('.free')) {
     deliveryFee.innerHTML = '免費'
   } else {
@@ -110,10 +116,14 @@ function deliveryFeeChange(event) {
 
 }
 
-orderPanel.addEventListener('click', function clickedOnOrderPanel(event) {
+main.addEventListener('click', function clickedOnMain(event) {
   const target = event.target
   const price = event.target.parentElement.nextElementSibling
 
+
+  if (event.target.matches('LABEL')) {
+    deliveryFeeChange(event)
+  }
   // 上半部的購物欄
   if (target.matches('.top')) {
     if (target.matches('.plus')) {
@@ -145,9 +155,4 @@ orderPanel.addEventListener('click', function clickedOnOrderPanel(event) {
 
 btnGroup.addEventListener('click', function ClickOnBtnGroup(event) {
   changStepperState(event)
-})
-deliveryInfo.addEventListener('click', function clickedOnDeliveryInfo(event) {
-  if (event.target.matches('LABEL')) {
-    deliveryFeeChange(event)
-  }
 })

@@ -48,3 +48,14 @@ $white: #FFFFFF;
   right: 0;
   top: 24px;
 }
+
+.border {
+  border-color: black !important;
+}
+
+.next-arrow {
+  background-image: url(/src/images/arrow-right-arrow.png);
+  width: 20px;
+  height: 9px;
+  background-size: contain;
+}

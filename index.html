@@ -94,13 +94,13 @@
 
       <div action="" class="delivery-info d-none">
         <h1>運送方式</h1>
-        <div class="delivery-wrapper ">
+        <div class="delivery-wrapper delivery-wrapper-top border">
           <input type="radio" id="radio-top" name="switch" class="radio" checked>
           <label for="radio-top" class="methods free">標準運送</label>
           <label for="radio-top" class="time free">約3~7個工作天</label>
           <label for="radio-top" class="cost free">免費</label>
         </div>
-        <div class="delivery-wrapper">
+        <div class="delivery-wrapper delivery-wrapper-bottom">
           <input type="radio" id="radio-bottom" name="switch" class="radio">
           <label for="radio-bottom" class="methods">DHL貨運</label>
           <label for="radio-bottom" class="time">48小時內送達</label>
@@ -166,8 +166,10 @@
     </section>
 
     <div class="btn-group">
-      <div class="previous d-none">上一步</div>
-      <div class="next r-0">下一步</div>
+      <div class="previous ">上一步</div>
+      <div class="next r-0">下一步
+        <span class="next-arrow"></span>
+      </div>
     </div>
   </main>
 
