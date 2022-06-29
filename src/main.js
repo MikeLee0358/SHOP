@@ -24,6 +24,9 @@ const total = document.querySelector('.total')
 let numTop = document.querySelector('.num.top')
 let numBottom = document.querySelector('.num.bottom')
 
+//currency
+const numberFormat = new Intl.NumberFormat('en-US', { style: "currency", currency: "USD"})
+
 let shoppingMoneyBox = 0
 let defaultMoney = 5298
 
@@ -147,7 +150,7 @@ main.addEventListener('click', function clickedOnMain(event) {
     }
   }
 
-  total.textContent = shoppingMoneyBox + pureNumber(deliveryFee) + defaultMoney
+  total.textContent = (shoppingMoneyBox + pureNumber(deliveryFee) + defaultMoney).toLocaleString('TWD')
 })
 
 
